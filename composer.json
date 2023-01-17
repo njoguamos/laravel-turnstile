@@ -1,0 +1,72 @@
+{
+    "name": "njoguamos/laravel-turnstile",
+    "description": "A laravel wrapper for https://developers.cloudflare.com/turnstile/",
+    "keywords": [
+        "NjoguAmos",
+        "laravel",
+        "turnstile"
+    ],
+    "homepage": "https://github.com/njoguamos/laravel-turnstile",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Njogu Amos",
+            "email": "njogamos@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0 | ^8.1 | ^8.2",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0|^8.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "NjoguAmos\\Turnstile\\": "src",
+            "NjoguAmos\\Turnstile\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NjoguAmos\\Turnstile\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NjoguAmos\\Turnstile\\TurnstileServiceProvider"
+            ],
+            "aliases": {
+                "Turnstile": "NjoguAmos\\Turnstile\\Facades\\Turnstile"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

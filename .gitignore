@@ -1,0 +1,7 @@
+.idea
+vendor
+coverage
+.phpunit.result.cache
+build
+.fleet
+.DS_Store

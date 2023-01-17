@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    environment:
+      PHP_EXTENSION_SQLITE3: 1
+      PHP_EXTENSION_PDO_SQLITE: 1
+      PHP_EXTENSION_GD: 1
+      PHP_EXTENSION_IMAGICK: 1

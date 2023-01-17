@@ -1,0 +1,29 @@
+{
+  "name": "laravel-turnstile",
+  "workspaceFolder": "/workspaces/laravel-turnstile",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "shutdownAction": "stopCompose",
+  "settings": {
+    "#terminal.integrated.shell.linux": "/bin/bash",
+    "php.validate.executablePath": "/usr/local/bin/php"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+  "extensions": [
+    "editorconfig.editorconfig",
+    "ryannaddy.laravel-artisan",
+    "xdebug.php-debug",
+    "bmewburn.vscode-intelephense-client",
+    "mrmlnc.vscode-apache",
+    "amiralizadeh9480.laravel-extra-intellisense",
+    "christian-kohler.path-intellisense",
+    "CoenraadS.bracket-pair-colorizer"
+  ],
+  "postCreateCommand": "composer install"
+}
