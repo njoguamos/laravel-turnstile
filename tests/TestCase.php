@@ -2,22 +2,12 @@
 
 namespace NjoguAmos\Turnstile\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use NjoguAmos\Turnstile\TurnstileServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'NjoguAmos\\Turnstile\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             TurnstileServiceProvider::class,
@@ -26,11 +16,7 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_Turnstile_table.php.stub';
-        $migration->up();
-        */
+        config()->set('turnstile.sitekey', '1x00000000000000000000AA');
+        config()->set('turnstile.secretkey', '1x0000000000000000000000000000000AA');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace NjoguAmos\Turnstile;
 
-use NjoguAmos\Turnstile\Commands\TurnstileCommand;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,10 +16,19 @@ class TurnstileServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-turnstile')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-turnstile_table')
-            ->hasCommand(TurnstileCommand::class);
+            ->name(name: 'turnstile')
+            ->hasTranslations()
+            ->hasConfigFile(configFileName: 'turnstile')
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->startWith(function (InstallCommand $command) {
+                        $command->info('Welcome! We are going to publish service provider and config files.');
+                    })
+                    ->publishConfigFile()
+                    ->askToStarRepoOnGitHub('njoguamos/laravel-turnstile')
+                    ->endWith(function (InstallCommand $command) {
+                        $command->info('Congratulation! You add your turnstile key and you are ready to go. Happy coding!');
+                    });
+            });
     }
 }
