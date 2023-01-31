@@ -7,8 +7,8 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use NjoguAmos\Turnstile\Turnstile;
+use Symfony\Component\HttpFoundation\Response;
 
 class TurnstileMiddleware
 {
@@ -34,6 +34,6 @@ class TurnstileMiddleware
     /**  @throws BindingResolutionException */
     protected function validateTurnstile(string $token): bool
     {
-        return app()->make(abstract: Turnstile::class)->validate($token);
+        return (new Turnstile())->validate($token);
     }
 }

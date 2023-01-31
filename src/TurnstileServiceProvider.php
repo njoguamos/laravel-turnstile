@@ -31,16 +31,4 @@ class TurnstileServiceProvider extends PackageServiceProvider
                     });
             });
     }
-
-    public function register()
-    {
-        parent::register();
-
-        $this->app->bind(abstract: Turnstile::class, concrete: function ($app) {
-            return new Turnstile(
-                url: 'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-                secretKey: config(key: 'turnstile.secretkey')
-            );
-        });
-    }
 }

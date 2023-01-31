@@ -6,7 +6,10 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-turnstile/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/njoguamos/laravel-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-turnstile.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-turnstile)
 
-[Turnstile](https://developers.cloudflare.com/turnstile/) is a new user friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.  
+[Turnstile](https://developers.cloudflare.com/turnstile/) is a new user friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.
+
+>**Info**
+> This package focuses on server side validation. You are free to implement your preferable client side technology such vue, reach, blade e.t.c
 
 ## Installation
 
@@ -34,7 +37,7 @@ TURNSTILE_SITE_KEY=
 ```
 
 ## Usage
-There are two way to use this package.
+There are three way to use this package.
 
 ### 1. As a middleware
 To use turnstile is specific routes of your application, you can register a new middleware in your laravel `app/Http/Kernel.php`. 
@@ -58,25 +61,25 @@ Route::get('/register', function () {
 })->middleware('turnstile');
 ```
 
-Ensure your frontend form submit a turnstile token using a name defined in turnstile config file. Your can learn how to implement client side render from [cloudflare website](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#implicitly-render-the-turnstile-widget). Example:
+Ensure your client side technology submit a turnstile token using a name defined in turnstile config file. Your can learn how to implement client side render from [cloudflare website](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#implicitly-render-the-turnstile-widget). Example:
 
-```html
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-<form action="/register" method="POST">
-    ...
-    
-    <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div> 
- 
-    ...
-</form>
-```
 
 Upon submitting the form, the turnstile token will be validated against turnstile api. If it fails, the request will be redirected back with `status` message. You can handle this message however you want in client side.
 
 ### 2. As a validation rule
 ```text
 @TODO: Working on it
+```
+
+### 3. Manual
+You can validate turnstile token by calling validate method of `Turnstile` facade. The result will be `true` when token passed and `false` when token fails.
+
+```php
+use NjoguAmos\Turnstile\Facades\Turnstile;
+
+$isValid = Turnstile::validate($token);
+
+// Code is valid or invalid
 ```
 
 ## Testing
