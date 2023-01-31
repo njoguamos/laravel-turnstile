@@ -82,6 +82,20 @@ $isValid = (new Turnstile())->validate($token);
 // Code is valid or invalid
 ```
 
+## Disabling
+To increase the speed of your unit tests, you may wish to disable the turnstile. You can do so by setting `TURNSTILE_ENABLED` to false. i.e
+
+```dotenv
+#.env
+TURNSTILE_ENABLED=false
+```
+
+When disabled, 
+- turnstile middleware will always pass
+- turnstile validation rule will always pass
+
+😀 Remember to turn turnstile on when you deploy.
+
 ## Testing
 >**Info**
 > This package does not mock request. It uses the secret keys [provided by Cloudflare](https://developers.cloudflare.com/turnstile/frequently-asked-questions/#are-there-sitekeys-and-secret-keys-that-can-be-used-for-testing). Therefore, test scenarios hits the real turnstile api.
