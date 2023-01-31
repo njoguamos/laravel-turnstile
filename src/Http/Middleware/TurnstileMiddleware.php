@@ -4,15 +4,16 @@ namespace NjoguAmos\Turnstile\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Container\BindingResolutionException;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 use NjoguAmos\Turnstile\Turnstile;
 
 class TurnstileMiddleware
 {
     /**  @throws BindingResolutionException */
-    public function handle(Request $request, Closure $next): Response|RedirectResponse
+    public function handle(Request $request, Closure $next): Response | RedirectResponse
     {
         if (!config(key: 'turnstile.enabled')) {
             return $next($request);
