@@ -19,15 +19,15 @@ class TurnstileServiceProvider extends PackageServiceProvider
             ->name(name: 'turnstile')
             ->hasTranslations()
             ->hasConfigFile(configFileName: 'turnstile')
-            ->hasInstallCommand(function (InstallCommand $command) {
+            ->hasInstallCommand(callable: function (InstallCommand $command) {
                 $command
-                    ->startWith(function (InstallCommand $command) {
-                        $command->info('Welcome! We are going to publish service provider and config files.');
+                    ->startWith(callable: function (InstallCommand $command) {
+                        $command->info(string: 'Welcome! We are going to publish service provider and config files.');
                     })
                     ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('njoguamos/laravel-turnstile')
-                    ->endWith(function (InstallCommand $command) {
-                        $command->info('Congratulation! You add your turnstile key and you are ready to go. Happy coding!');
+                    ->askToStarRepoOnGitHub(vendorSlashRepoName: 'njoguamos/laravel-turnstile')
+                    ->endWith(callable: function (InstallCommand $command) {
+                        $command->info(string: 'Congratulation! You add your turnstile key and you are ready to go. Happy coding!');
                     });
             });
     }
@@ -36,7 +36,7 @@ class TurnstileServiceProvider extends PackageServiceProvider
     {
         parent::register();
 
-        $this->app->bind(Turnstile::class, function ($app) {
+        $this->app->bind(abstract: Turnstile::class, concrete: function ($app) {
             return new Turnstile(
                 url: 'https://challenges.cloudflare.com/turnstile/v0/siteverify',
                 secretKey: config(key: 'turnstile.secretkey')
