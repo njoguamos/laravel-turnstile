@@ -7,10 +7,18 @@ use RuntimeException;
 
 class Turnstile
 {
-    public function __construct(protected string $url, protected ?string $secretKey)
+    protected string $url;
+
+    protected ?string $secretKey;
+
+    public function __construct()
     {
+        $this->url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+        $this->secretKey = config(key: 'turnstile.secretkey');
+
         if (empty($this->secretKey)) {
-            throw new RuntimeException(message:  trans(key: 'turnstile::turnstile.no_secret_key'));
+            throw new RuntimeException(message: trans(key: 'turnstile::turnstile.no_secret_key'));
         }
     }
 
@@ -18,10 +26,10 @@ class Turnstile
     {
         $response = Http::acceptJson()
             ->post($this->url, [
-            'response' => $token,
-            'secret'   => $this->secretKey
-        ]);
+                'response' => $token,
+                'secret'   => $this->secretKey
+            ]);
 
-        return (bool) $response->json()['success'];
+        return (bool)$response->json()['success'];
     }
 }
