@@ -75,12 +75,26 @@ Upon submitting the form, the turnstile token will be validated against turnstil
 You can validate turnstile token by calling validate method of `Turnstile` facade. The result will be `true` when token passed and `false` when token fails.
 
 ```php
-use NjoguAmos\Turnstile\Facades\Turnstile;
+use NjoguAmos\Turnstile\Turnstile;
 
-$isValid = Turnstile::validate($token);
+$isValid = (new Turnstile())->validate($token);
 
 // Code is valid or invalid
 ```
+
+## Disabling
+To increase the speed of your unit tests, you may wish to disable the turnstile. You can do so by setting `TURNSTILE_ENABLED` to false. i.e
+
+```dotenv
+#.env
+TURNSTILE_ENABLED=false
+```
+
+When disabled, 
+- turnstile middleware will always pass
+- turnstile validation rule will always pass
+
+😀 Remember to turn turnstile on when you deploy.
 
 ## Testing
 >**Info**
