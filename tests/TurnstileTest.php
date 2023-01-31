@@ -9,8 +9,8 @@ it(description: 'throw an exception when secret key is not available', closure: 
     $this->app->make(abstract: Turnstile::class);
 })->throws(exception: RuntimeException::class);
 
-it(description: 'it return correct response based on provided key', closure: function (string $token, bool $expected) {
-    config()->set(key: 'turnstile.secretkey', value: $token);
+it(description: 'it return correct response based on provided key', closure: function (string $secret, bool $expected) {
+    config()->set(key: 'turnstile.secretkey', value: $secret);
 
     $turnstile = $this->app->make(abstract: Turnstile::class);
 
