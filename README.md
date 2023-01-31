@@ -60,7 +60,7 @@ Route::get('/register', function () {
 
 Ensure your frontend form submit a turnstile token using a name defined in turnstile config file. Your can learn how to implement client side render from [cloudflare website](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#implicitly-render-the-turnstile-widget). Example:
 
-```php
+```html
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <form action="/register" method="POST">
