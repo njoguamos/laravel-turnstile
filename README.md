@@ -75,9 +75,9 @@ Upon submitting the form, the turnstile token will be validated against turnstil
 You can validate turnstile token by calling validate method of `Turnstile` facade. The result will be `true` when token passed and `false` when token fails.
 
 ```php
-use NjoguAmos\Turnstile\Facades\Turnstile;
+use NjoguAmos\Turnstile\Turnstile;
 
-$isValid = Turnstile::validate($token);
+$isValid = (new Turnstile())->validate($token);
 
 // Code is valid or invalid
 ```
