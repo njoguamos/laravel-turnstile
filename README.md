@@ -1,11 +1,12 @@
-# A laravel wrapper for [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
+![Cover image](/cover.png)
+# Cloudflare Turnstile for Laravel 8+
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-turnstile.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-turnstile)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-turnstile/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/njoguamos/laravel-turnstile/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-turnstile/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/njoguamos/laravel-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-turnstile.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-turnstile)
 
-Turnstile is a new user friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.  
+[Turnstile](https://developers.cloudflare.com/turnstile/) is a new user friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.  
 
 ## Installation
 
