@@ -37,7 +37,7 @@ TURNSTILE_SITE_KEY=
 ```
 
 ## Usage
-There are two way to use this package.
+There are three way to use this package.
 
 ### 1. As a middleware
 To use turnstile is specific routes of your application, you can register a new middleware in your laravel `app/Http/Kernel.php`. 
@@ -69,6 +69,17 @@ Upon submitting the form, the turnstile token will be validated against turnstil
 ### 2. As a validation rule
 ```text
 @TODO: Working on it
+```
+
+### 3. Manual
+You can validate turnstile token by calling validate method of `Turnstile` facade. The result will be `true` when token passed and `false` when token fails.
+
+```php
+use NjoguAmos\Turnstile\Facades\Turnstile;
+
+$isValid = Turnstile::validate($token);
+
+// Code is valid or invalid
 ```
 
 ## Testing
