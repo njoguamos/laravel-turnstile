@@ -98,7 +98,7 @@ When disabled,
 
 ## Testing
 >**Info**
-> This package does not mock request. It uses the secret keys [provided by Cloudflare](https://developers.cloudflare.com/turnstile/frequently-asked-questions/#are-there-sitekeys-and-secret-keys-that-can-be-used-for-testing). Therefore, test scenarios hits the real turnstile api.
+> This package does not mock request. It uses the secret keys [provided by Cloudflare](https://developers.cloudflare.com/turnstile/reference/testing/). Therefore, test scenarios hits the real turnstile api.
 
 ```bash
 composer test
