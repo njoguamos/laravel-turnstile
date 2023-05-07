@@ -19,7 +19,9 @@ class TurnstileMiddleware
             return $next($request);
         }
 
-        if ($this->validateTurnstile(token: $request->get(config(key: 'turnstile.field')))) {
+        $token = $request->get(config(key: 'turnstile.field'));
+
+        if ($token && $this->validateTurnstile(token: $token)) {
             return $next($request);
         }
 

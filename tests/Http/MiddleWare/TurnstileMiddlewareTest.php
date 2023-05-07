@@ -69,3 +69,21 @@ test(description: 'it allows the request to pass when the token is valid', closu
         ->and(value: session()->get(key:'status'))->toBeEmpty()
         ->and(value: $response->isSuccessful())->toBeTrue();
 });
+
+test(description: 'it redirects back the request if the token is null', closure: function () {
+    setSecretKey(type: 'valid');
+
+    $response = (new TurnstileMiddleware())
+        ->handle(
+            request: createRequest(
+                uri: '/login',
+                method: 'post',
+                data: [config(key: 'turnstile.field') => null]
+            ),
+            next: fn () => new Response()
+        );
+
+    expect(value: $response->isRedirect())->toBeTrue()
+        ->and(value: $response->getSession()->get(key:'status'))
+        ->toBe(expected: trans(key: 'turnstile::turnstile.failed'));
+});
