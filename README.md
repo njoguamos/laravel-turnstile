@@ -40,7 +40,6 @@ Ensure that you have update your application `.env` with credentials from [cloud
 #.env file
 
 TURNSTILE_SECRET_KEY=
-TURNSTILE_SITE_KEY=
 ```
 
 ## Usage
