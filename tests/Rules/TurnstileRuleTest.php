@@ -28,3 +28,10 @@ it(description: 'fails with a spent valid token', closure: function () {
 
     expect(value:$this->rule)->not->toPassWith('DUMMY.TOKEN');
 });
+
+it(description: 'passes when turnstile is disable', closure: function () {
+    config()->set('turnstile.secretkey', null);
+    config()->set('turnstile.enabled', false);
+
+    expect(value:$this->rule)->toPassWith('');
+});

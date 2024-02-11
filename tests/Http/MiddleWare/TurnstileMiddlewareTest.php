@@ -4,7 +4,8 @@ use Illuminate\Support\Str;
 use NjoguAmos\Turnstile\Http\Middleware\TurnstileMiddleware;
 use Symfony\Component\HttpFoundation\Response;
 
-test(description: 'it skips the middleware when disabled', closure: function () {
+it(description: 'skips the middleware when disabled', closure: function () {
+    config()->set(key: 'turnstile.secretkey', value: null);
     config()->set(key: 'turnstile.enabled', value: false);
 
     $response = (new TurnstileMiddleware())
@@ -16,7 +17,7 @@ test(description: 'it skips the middleware when disabled', closure: function () 
     expect(value: $response->isRedirect())->toBeFalse();
 });
 
-test(description: 'it redirects back the request if the token is invalid', closure: function () {
+it(description: 'redirects back the request if the token is invalid', closure: function () {
     setSecretKey(type: 'invalid');
 
     $response = (new TurnstileMiddleware())
@@ -34,7 +35,7 @@ test(description: 'it redirects back the request if the token is invalid', closu
         ->toBe(expected: trans(key: 'turnstile::turnstile.failed'));
 });
 
-test(description: 'it redirects back the request if the token is already spent', closure: function () {
+it(description: 'redirects back the request if the token is already spent', closure: function () {
     setSecretKey(type: 'spent');
 
     $response = (new TurnstileMiddleware())
@@ -52,7 +53,7 @@ test(description: 'it redirects back the request if the token is already spent',
         ->toBe(expected: trans(key: 'turnstile::turnstile.failed'));
 });
 
-test(description: 'it allows the request to pass when the token is valid', closure: function () {
+it(description: 'allows the request to pass when the token is valid', closure: function () {
     setSecretKey(type: 'valid');
 
     $response = (new TurnstileMiddleware())
@@ -70,7 +71,7 @@ test(description: 'it allows the request to pass when the token is valid', closu
         ->and(value: $response->isSuccessful())->toBeTrue();
 });
 
-test(description: 'it redirects back the request if the token is null', closure: function () {
+it(description: 'redirects back the request if the token is null', closure: function () {
     setSecretKey(type: 'valid');
 
     $response = (new TurnstileMiddleware())
