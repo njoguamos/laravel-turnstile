@@ -14,7 +14,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('turnstile.sitekey', '1x00000000000000000000AA');
         config()->set('turnstile.secretkey', '1x0000000000000000000000000000000AA');

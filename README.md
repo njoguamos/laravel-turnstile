@@ -1,5 +1,5 @@
 ![Cover image](/cover.png)
-# Cloudflare Turnstile for Laravel 8+
+# Cloudflare Turnstile for Laravel 10+
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-turnstile.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-turnstile)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-turnstile/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/njoguamos/laravel-turnstile/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -10,6 +10,13 @@
 
 >**Info**
 > This package focuses on server side validation. You are free to implement your preferable client side technology such vue, reach, blade e.t.c
+
+## Version compatibility
+
+| Version | PHP versions     | Laravel versions |
+|---------|:-----------------|------------------|
+| 1.x.x   | 8.0, 8.1 and 8.2 | 9.x and 10.x     |
+| 2.x.x   | 8.1, 8.2 and 8.3 | 10.x             |
 
 ## Installation
 
