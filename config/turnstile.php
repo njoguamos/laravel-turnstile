@@ -14,7 +14,6 @@ return [
      |
      */
     'secretkey' => env(key: 'TURNSTILE_SECRET_KEY'),
-    'sitekey'   => env(key: 'TURNSTILE_SITE_KEY'),
 
     /*
      |--------------------------------------------------------------------------
