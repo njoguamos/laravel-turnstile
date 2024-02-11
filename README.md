@@ -73,9 +73,26 @@ Ensure your client side technology submit a turnstile token using a name defined
 
 Upon submitting the form, the turnstile token will be validated against turnstile api. If it fails, the request will be redirected back with `status` message. You can handle this message however you want in client side.
 
-### 2. As a validation rule
-```text
-@TODO: Working on it
+### 2. As a validation rule (v2.x.x)
+
+You can user the inbuilt validation to validate form input
+
+```php
+use NjoguAmos\Turnstile\Rules\TurnstileRule;
+
+class RegisterRequest extends FormRequest
+{
+    /** @return array<string, array> */
+    public function rules(): array
+    {
+        return [
+            # Other fields
+            'token'   => ['required', new TurnstileRule() ],
+        ];
+    }
+    
+    # Other code
+}
 ```
 
 ### 3. Manual
