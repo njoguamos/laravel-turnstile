@@ -19,6 +19,7 @@ class TurnstileServiceProvider extends PackageServiceProvider
             ->name(name: 'turnstile')
             ->hasTranslations()
             ->hasConfigFile(configFileName: 'turnstile')
+            ->hasTranslations()
             ->hasInstallCommand(callable: function (InstallCommand $command) {
                 $command
                     ->startWith(callable: function (InstallCommand $command) {

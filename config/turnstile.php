@@ -27,7 +27,7 @@ return [
      |
      |
      */
-    'enabled'   => env(key: 'TURNSTILE_ENABLED', default: true),
+    'enabled' => env(key: 'TURNSTILE_ENABLED', default: true),
 
     /*
      |--------------------------------------------------------------------------
@@ -40,5 +40,5 @@ return [
      |
      |
      */
-    'field'     => env(key: 'TURNSTILE_FIELD', default: 'cf-turnstile-response'),
+    'field' => env(key: 'TURNSTILE_FIELD', default: 'cf-turnstile-response'),
 ];

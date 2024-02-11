@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use NjoguAmos\Turnstile\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Illuminate\Http\Request;
@@ -23,3 +24,23 @@ function setSecretKey(string $type): void
 
     config()->set(key: 'turnstile.secretkey', value: $key);
 }
+
+
+expect()
+    ->extend(name: 'toPassWith', extend: function (mixed $value) {
+        $rule = $this->value;
+
+        if (!$rule instanceof ValidationRule) {
+            throw new Exception(message: 'Value is not an invokable rule');
+        }
+
+        $passed = true;
+
+        $fail = function () use (&$passed) {
+            $passed = false;
+        };
+
+        $rule->validate(attribute: 'attribute', value: $value, fail: $fail);
+
+        expect(value: $passed)->toBeTrue();
+    });
