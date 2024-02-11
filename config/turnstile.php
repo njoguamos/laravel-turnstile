@@ -25,7 +25,6 @@ return [
      | when testing your application. Disabling ensure your tests runs
      | smoothly. remember to enable once you are done testing.
      |
-     |
      */
     'enabled' => env(key: 'TURNSTILE_ENABLED', default: true),
 
@@ -38,7 +37,20 @@ return [
      | application. Failure to include the field in the request will cause
      | a runtime exception. This is precautionary measure.
      |
-     |
      */
     'field' => env(key: 'TURNSTILE_FIELD', default: 'cf-turnstile-response'),
+
+    /*
+     |--------------------------------------------------------------------------
+     | Turnstile Site Verify Url
+     |--------------------------------------------------------------------------
+     |
+     | This is the cloudflare endpoint that is used to verify the turnstile
+     | token. You must must call the siteverify endpoint to validate the
+     | Turnstile widget response
+     |
+     | Learn more: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+     |
+     */
+    'url' => env(key: 'TURNSTILE_URL', default: 'https://challenges.cloudflare.com/turnstile/v0/siteverify'),
 ];
