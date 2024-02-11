@@ -12,7 +12,7 @@ class TurnstileRule implements ValidationRule
 {
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (! (new Turnstile())->validate(token: $value)) {
+        if (config(key: 'turnstile.enabled') && ! (new Turnstile())->validate(token: $value)) {
             $fail(trans(key: 'turnstile::turnstile.failed'));
         }
     }
