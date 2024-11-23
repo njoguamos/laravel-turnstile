@@ -13,6 +13,7 @@ return [
      | https://developers.cloudflare.com/turnstile/get-started/
      |
      */
+    'sitekey'   => env(key: 'TURNSTILE_SITE_KEY'),
     'secretkey' => env(key: 'TURNSTILE_SECRET_KEY'),
 
     /*

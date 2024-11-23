@@ -37,6 +37,7 @@ The install command will publish the [config file](/config/turnstile.php).
 Ensure that you have update your application `.env` with credentials from [cloudflare](https://developers.cloudflare.com/turnstile/get-started/) i.e.
 
 ```dotenv
+TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
 TURNSTILE_ENABLED=true
 #TURNSTILE_ENABLED=false -> when you want to disable e.g when testing
