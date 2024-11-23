@@ -4,7 +4,6 @@ namespace NjoguAmos\Turnstile\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Container\BindingResolutionException;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use NjoguAmos\Turnstile\Turnstile;
