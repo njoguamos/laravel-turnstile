@@ -27,7 +27,7 @@
         "larastan/larastan": "^v3.0.0",
         "orchestra/testbench": "^8.2 | ^9.0",
         "pestphp/pest": "^v3.5.1",
-        "pestphp/pest-plugin-laravel": "^v3.0.0",
+        "pestphp/pest-plugin-laravel": "^v2.4.0 | ^v3.0.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^2.0.0",
         "phpstan/phpstan-phpunit": "^2.0.1"
