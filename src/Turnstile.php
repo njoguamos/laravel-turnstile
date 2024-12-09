@@ -2,6 +2,7 @@
 
 namespace NjoguAmos\Turnstile;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use RuntimeException;
 
@@ -24,12 +25,25 @@ class Turnstile
 
     public function validate(string $token): bool
     {
-        $response = Http::acceptJson()
-            ->post($this->url, [
+        return $this->getResponse(token: $token)->success;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getResponse(string $token): TurnstileResponse
+    {
+        $response = Http::retry(4, 100)
+            ->acceptJson()
+            ->asForm()
+            ->post(url: $this->url, data: [
                 'response' => $token,
-                'secret'   => $this->secretKey
+                'secret'   => $this->secretKey,
             ]);
 
-        return (bool)$response->json()['success'];
+        return new TurnstileResponse(
+            success: $response->json(key: 'success'),
+            error_codes: $response->json(key: 'error-codes'),
+        );
     }
 }

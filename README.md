@@ -107,6 +107,17 @@ $isValid = (new Turnstile())->validate($token);
 // Code is valid or invalid
 ```
 
+If you would like to have more control on the response, you can use `getResponse` method of `Turnstile` facade. The result will be an instance of `TurnstileResponse` class.
+
+```php
+use NjoguAmos\Turnstile\Turnstile;
+
+$response = (new Turnstile())->getResponse($token);
+
+// Result is an instance of \NjoguAmos\Turnstile\TurnstileResponse
+
+```
+
 ## Disabling
 To increase the speed of your unit tests, you may wish to disable the turnstile. You can do so by setting `TURNSTILE_ENABLED` to false. i.e
 
