@@ -17,7 +17,7 @@ jobs:
     name: Run Pint
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup PHP 8.3
         uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
