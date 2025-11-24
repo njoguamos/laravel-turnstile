@@ -13,11 +13,11 @@
 
 ## Version compatibility
 
-| Version | PHP versions     | Laravel versions |
-|---------|:-----------------|------------------|
-| 1.x.x   | 8.0, 8.1 and 8.2 | 9.x and 10.x     |
-| 2.x.x   | 8.1, 8.2 and 8.3 | 10.x and 11.x    |
-| 3.x.x   | 8.2, 8.3 and 8.4 | 11.x and 12.x    |
+| Version | PHP versions          | Laravel versions |
+|---------|:----------------------|------------------|
+| 1.x.x   | 8.0, 8.1 and 8.2      | 9.x and 10.x     |
+| 2.x.x   | 8.1, 8.2 and 8.3      | 10.x and 11.x    |
+| 3.x.x   | 8.2, 8.3, 8.4 and 8.5 | 11.x and 12.x    |
 
 ## Installation
 
