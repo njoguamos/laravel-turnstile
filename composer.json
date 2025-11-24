@@ -23,19 +23,18 @@
     },
     "require-dev": {
         "laravel/pint": "^v1.13.11",
-        "nunomaduro/collision": "^7.0 | ^8.0",
+        "nunomaduro/collision": "^7.0 | ^8.0 | ^9.0",
         "larastan/larastan": "^v3.0.0",
-        "orchestra/testbench": "^9.0",
-        "pestphp/pest": "^v3.5.1",
-        "pestphp/pest-plugin-laravel": "^v3.0.0",
+        "orchestra/testbench": "^9.0 | ^10.0",
+        "pestphp/pest": "^v4.1.4",
+        "pestphp/pest-plugin-laravel": "^v4.0.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^2.0.0",
         "phpstan/phpstan-phpunit": "^2.0.1"
     },
     "autoload": {
         "psr-4": {
-            "NjoguAmos\\Turnstile\\": "src",
-            "NjoguAmos\\Turnstile\\Database\\Factories\\": "database/factories"
+            "NjoguAmos\\Turnstile\\": "src"
         }
     },
     "autoload-dev": {
