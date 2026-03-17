@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     strategy:
       fail-fast: true
@@ -37,7 +40,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip
           tools: composer:v2
-          coverage: none
+          coverage: pcov
 
       - name: Setup problem matchers
         run: |
@@ -54,3 +57,20 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest --coverage
+
+      - name: Format coverage report
+        if: matrix.php == '8.4' && matrix.laravel == '13.*' && matrix.stability == 'prefer-stable'
+        run: |
+          mkdir -p build
+          echo "### Test Coverage" > build/coverage_summary.md
+          echo "\`\`\`" >> build/coverage_summary.md
+          cat build/coverage.txt >> build/coverage_summary.md
+          echo "\`\`\`" >> build/coverage_summary.md
+          cat build/coverage_summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Report Coverage
+        if: matrix.php == '8.4' && matrix.laravel == '13.*' && matrix.stability == 'prefer-stable' && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: coverage
+          path: build/coverage_summary.md

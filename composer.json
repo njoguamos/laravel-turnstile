@@ -67,6 +67,21 @@
             }
         }
     },
+    "archive": {
+        "exclude": [
+            "/.devcontainer",
+            "/.editorconfig",
+            "/.gitattributes",
+            "/.github",
+            "/.gitignore",
+            "/cover.png",
+            "/phpstan-baseline.neon",
+            "/phpstan.neon.dist",
+            "/phpunit.xml.dist",
+            "/pint.json",
+            "/tests"
+        ]
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
