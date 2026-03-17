@@ -6,7 +6,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-turnstile/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/njoguamos/laravel-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-turnstile.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-turnstile)
 
-[Turnstile](https://developers.cloudflare.com/turnstile/) is a new user friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.
+[Turnstile](https://developers.cloudflare.com/turnstile/) is a new user-friendly, privacy preserving alternative to CAPTCHA. This package provides a flexible way of integrating turnstile into your Laravel application. This package can be turned on and off for your convenience.
 
 >**Info**
 > This package focuses on server side validation. You are free to implement your preferable client side technology such vue, reach, blade e.t.c
@@ -14,10 +14,11 @@
 ## Version compatibility
 
 | Version | PHP versions     | Laravel versions |
-|---------|:-----------------|------------------|
-| 1.x.x   | 8.0, 8.1 and 8.2 | 9.x and 10.x     |
-| 2.x.x   | 8.1, 8.2 and 8.3 | 10.x and 11.x    |
-| 3.x.x   | 8.2, 8.3 and 8.4 | 11.x and 12.x    |
+|-----|:-----------------|------------------|
+| 1.x | 8.0, 8.1 and 8.2 | 9.x and 10.x     |
+| 2.x | 8.1, 8.2 and 8.3 | 10.x and 11.x    |
+| 3.x | 8.2, 8.3 and 8.4 | 11.x and 12.x    |
+| 4.x | 8.3, 8.4 and 8.5 | 12.x and 13.x    |
 
 ## Installation
 
