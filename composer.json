@@ -16,18 +16,18 @@
         }
     ],
     "require": {
-        "php": "^8.2 | ^8.3 | ^8.4",
+        "php": "^8.3 | ^8.4 | ^8.5",
         "guzzlehttp/guzzle": "^7.5",
-        "illuminate/contracts": "^11.0 | ^12.0",
+        "illuminate/contracts": "^12.0 | ^13.0",
         "spatie/laravel-package-tools": "^1.16.3"
     },
     "require-dev": {
         "laravel/pint": "^v1.13.11",
         "nunomaduro/collision": "^7.0 | ^8.0",
         "larastan/larastan": "^v3.0.0",
-        "orchestra/testbench": "^9.0",
-        "pestphp/pest": "^v3.5.1",
-        "pestphp/pest-plugin-laravel": "^v3.0.0",
+        "orchestra/testbench": "^10.0 | ^11.0",
+        "pestphp/pest": "^v4.0.0",
+        "pestphp/pest-plugin-laravel": "^v4.0.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^2.0.0",
         "phpstan/phpstan-phpunit": "^2.0.1"
@@ -48,7 +48,7 @@
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint --parallel"
     },
     "config": {
         "sort-packages": true,
@@ -66,6 +66,21 @@
                 "Turnstile": "NjoguAmos\\Turnstile\\Facades\\Turnstile"
             }
         }
+    },
+    "archive": {
+        "exclude": [
+            "/.devcontainer",
+            "/.editorconfig",
+            "/.gitattributes",
+            "/.github",
+            "/.gitignore",
+            "/cover.png",
+            "/phpstan-baseline.neon",
+            "/phpstan.neon.dist",
+            "/phpunit.xml.dist",
+            "/pint.json",
+            "/tests"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
