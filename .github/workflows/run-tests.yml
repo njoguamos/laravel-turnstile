@@ -56,16 +56,33 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: vendor/bin/pest --coverage
+        run: vendor/bin/pest --coverage --coverage-clover build/logs/clover.xml
 
       - name: Format coverage report
         if: matrix.php == '8.4' && matrix.laravel == '13.*' && matrix.stability == 'prefer-stable'
         run: |
           mkdir -p build
           echo "### Test Coverage" > build/coverage_summary.md
+          echo "| Class | Coverage |" >> build/coverage_summary.md
+          echo "| :--- | :---: |" >> build/coverage_summary.md
+
+          # Extract class name and its percentage from the text report
+          # Example line: "  NjoguAmos\Turnstile\Http\Controllers\TurnstileController . 100.0% "
+          grep -E '^[[:space:]]*[A-Za-z0-9\\]+[[:space:]]+\.+' build/coverage.txt | while read -r line; do
+            class=$(echo "$line" | awk '{print $1}')
+            percent=$(echo "$line" | grep -oE '[0-9.]+%')
+            echo "| $class | $percent |" >> build/coverage_summary.md
+          done
+
+          # Add a summary section
+          echo "" >> build/coverage_summary.md
+          echo "<details><summary>Full Coverage Report</summary>" >> build/coverage_summary.md
+          echo "" >> build/coverage_summary.md
           echo "\`\`\`" >> build/coverage_summary.md
           cat build/coverage.txt >> build/coverage_summary.md
           echo "\`\`\`" >> build/coverage_summary.md
+          echo "</details>" >> build/coverage_summary.md
+
           cat build/coverage_summary.md >> $GITHUB_STEP_SUMMARY
 
       - name: Report Coverage
