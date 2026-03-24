@@ -74,7 +74,7 @@ jobs:
 
       - name: Report Coverage
         if: matrix.php == '8.4' && matrix.laravel == '13.*' && matrix.stability == 'prefer-stable'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: coverage
           path: build/coverage_summary.md
